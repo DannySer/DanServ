@@ -307,7 +307,7 @@ function attachModalTriggers() {
 
       modalBody.innerHTML = `
         <span class="badge badge-primary" style="margin-bottom: 0.75rem;">${course.categoria}</span>
-        <h2 style="font-family: var(--font-heading); font-size: 1.65rem; color: var(--color-dark); margin-bottom: 0.5rem;">${course.nombre}</h2>
+        <h2 id="syllabusModalTitle" style="font-family: var(--font-heading); font-size: 1.65rem; color: var(--color-dark); margin-bottom: 0.5rem;">${course.nombre}</h2>
         <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1.25rem;">${course.descripcion}</p>
 
         <div style="background: var(--color-surface-subtle); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; font-size: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.65rem; border: 1px solid var(--color-border);">
@@ -399,25 +399,45 @@ function initDiagnosticQuiz() {
   const recommendedLinkEl = document.getElementById("recommendedCourseLink");
 
   quiz.querySelectorAll(".quiz-option").forEach(opt => {
-    opt.addEventListener("click", () => {
+    // Las opciones conservan su presentación visual, pero también funcionan con teclado.
+    opt.setAttribute("role", "button");
+    opt.setAttribute("tabindex", "0");
+    opt.setAttribute("aria-pressed", "false");
+
+    const selectOption = () => {
       const stepEl = opt.closest(".quiz-step");
-      const stepIndex = parseInt(stepEl.getAttribute("data-step"), 10);
+      if (!stepEl) return;
+      const stepIndex = Number.parseInt(stepEl.getAttribute("data-step"), 10);
       const answerValue = opt.getAttribute("data-value");
+
+      // Solo una opción puede quedar seleccionada en cada paso.
+      stepEl.querySelectorAll(".quiz-option").forEach(option => {
+        option.classList.remove("is-selected");
+        option.setAttribute("aria-pressed", "false");
+      });
+      opt.classList.add("is-selected");
+      opt.setAttribute("aria-pressed", "true");
 
       if (stepIndex === 1) userAnswers.goal = answerValue;
       if (stepIndex === 2) userAnswers.level = answerValue;
       if (stepIndex === 3) userAnswers.time = answerValue;
 
-      // Avanzar al siguiente paso
       if (stepIndex < 3) {
         stepEl.classList.remove("is-active");
         const nextStep = quiz.querySelector(`.quiz-step[data-step="${stepIndex + 1}"]`);
         if (nextStep) nextStep.classList.add("is-active");
         if (progressBars[stepIndex]) progressBars[stepIndex].classList.add("is-completed");
       } else {
-        // Mostrar resultado calculado
         stepEl.classList.remove("is-active");
         showRecommendation(userAnswers);
+      }
+    };
+
+    opt.addEventListener("click", selectOption);
+    opt.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectOption();
       }
     });
   });
@@ -440,9 +460,24 @@ function initDiagnosticQuiz() {
       reason = "Aprender a auditar y blindar aplicaciones con laboratorios reales te permitirá anticipar y resolver incidentes de seguridad críticos.";
     }
 
+    // Incorporar el nivel y el tiempo disponible al contexto de la recomendación.
+    const levelContext = {
+      principiante: "Tu nivel inicial sugiere comenzar reforzando fundamentos y avanzar paso a paso.",
+      intermedio: "Tu experiencia previa permite aprovechar mejor los ejercicios prácticos y los proyectos.",
+      avanzado: "Por tu experiencia profesional, conviene enfocarte en la aplicación y profundización técnica."
+    };
+    const timeContext = {
+      "tiempo-reducido": "Con 4 a 6 horas semanales, prioriza un avance constante y realista.",
+      "tiempo-medio": "Con 8 a 10 horas semanales, puedes combinar estudio y práctica con buen equilibrio.",
+      "tiempo-intensivo": "Con más de 12 horas semanales, puedes dedicar más tiempo a laboratorios y proyectos."
+    };
+    const profileContext = [levelContext[answers.level], timeContext[answers.time]]
+      .filter(Boolean)
+      .join(" ");
+
     if (resultCard && recommendedCourseEl && recommendedReasonEl) {
       recommendedCourseEl.textContent = matchedCourse.nombre;
-      recommendedReasonEl.textContent = reason;
+      recommendedReasonEl.textContent = [reason, profileContext].filter(Boolean).join(" ");
       if (recommendedLinkEl) {
         recommendedLinkEl.href = `cursos.html?highlight=${matchedCourse.id}`;
       }
