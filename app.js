@@ -426,7 +426,11 @@ function initDiagnosticQuiz() {
         stepEl.classList.remove("is-active");
         const nextStep = quiz.querySelector(`.quiz-step[data-step="${stepIndex + 1}"]`);
         if (nextStep) nextStep.classList.add("is-active");
-        if (progressBars[stepIndex]) progressBars[stepIndex].classList.add("is-completed");
+        if (progressBars[stepIndex - 1]) {
+          progressBars[stepIndex - 1].classList.remove("is-active");
+          progressBars[stepIndex - 1].classList.add("is-completed");
+        }
+        if (progressBars[stepIndex]) progressBars[stepIndex].classList.add("is-active");
       } else {
         stepEl.classList.remove("is-active");
         showRecommendation(userAnswers);
