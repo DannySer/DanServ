@@ -1,0 +1,40 @@
+DANIEL MORALES · CATÁLOGO DE FORMACIÓN
+
+El catálogo está preparado para mostrar información real. Al entregarse,
+window.CURSOS está vacío: no se han inventado cursos, precios ni fechas.
+
+CÓMO AÑADIR UN CURSO
+1. Abre catalogo.js con un editor de texto.
+2. Dentro de los corchetes de window.CURSOS = [], añade un objeto por curso.
+3. Usa comillas dobles para nombres de campos y valores de texto.
+4. Separa los objetos por comas. Guarda con codificación UTF-8.
+5. Abre servicios.html y verifica la información antes de volver a publicar.
+
+ESTRUCTURA (plantilla de edición, no datos de un curso):
+{
+  "titulo": "",
+  "area": "",
+  "modalidad": "",
+  "nivel": "",
+  "duracion": "",
+  "descripcion": "",
+  "precio": "",
+  "fecha": "",
+  "enlace": ""
+}
+
+Sustituye los textos vacíos únicamente con información confirmada.
+El título es obligatorio. Puedes eliminar los campos opcionales que no
+tengas. Un objeto sin título se ignora. El catálogo genera filtros a partir
+de las áreas y modalidades de los cursos cargados. La búsqueda reconoce
+palabras con o sin tildes y muestra un estado claro si no encuentra opciones.
+
+Precio: incluye moneda y alcance (por ejemplo, si es total o por módulo).
+No publiques importes provisionales como si fueran definitivos.
+Enlace: puede apuntar a la ficha oficial del curso con http:// o https://.
+Los enlaces no válidos se omiten. El botón de consulta prepara un correo
+a daniel_servicios@outlook.com con el nombre del curso. El usuario revisa
+y envía su propio mensaje. No se procesan pagos ni se confirma matrícula.
+
+Los datos se renderizan como texto; no escribas etiquetas HTML en ellos.
+No se necesita instalar dependencias ni ejecutar un proceso de compilación.
