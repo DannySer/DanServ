@@ -1478,3 +1478,22 @@ a:focus-visible {
   .course-actions { grid-template-columns: 1fr; }
   .course-meta { grid-template-columns: 1fr 1fr; }
 }
+
+
+/* Indicador de avance del diagnóstico */
+.quiz-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.quiz-progress .progress-bar {
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface-subtle);
+  transition: background 0.25s ease;
+}
+.quiz-progress .progress-bar.is-active,
+.quiz-progress .progress-bar.is-completed {
+  background: var(--color-brand-600);
+}
