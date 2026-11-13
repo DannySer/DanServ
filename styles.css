@@ -1382,3 +1382,118 @@ button, input, select, textarea {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Compatibilidad de componentes generados por app.js
+   -------------------------------------------------------------------------- */
+.course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.course-description {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+.course-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.meta-item .label {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.meta-item .value {
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.course-pricing {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: auto 0 1.5rem;
+}
+.price-amount {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+}
+.course-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.quiz-option {
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-bounce);
+  background: var(--bg-surface);
+}
+.quiz-option:hover,
+.quiz-option:focus-visible {
+  border-color: var(--color-brand-500);
+  background: var(--color-brand-50);
+  outline: none;
+}
+.quiz-option.is-selected {
+  border-color: var(--color-brand-600);
+  background: var(--color-brand-50);
+  box-shadow: 0 0 0 2px var(--color-brand-200);
+}
+.quiz-option:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+@media (max-width: 768px) {
+  .course-actions { grid-template-columns: 1fr; }
+  .course-meta { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* Indicador de avance del diagnóstico */
+.quiz-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.quiz-progress .progress-bar {
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface-subtle);
+  transition: background 0.25s ease;
+}
+.quiz-progress .progress-bar.is-active,
+.quiz-progress .progress-bar.is-completed {
+  background: var(--color-brand-600);
+}
