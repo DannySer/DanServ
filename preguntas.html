@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Preguntas frecuentes sobre los cursos de Ti: precios, cuotas, modalidades, fechas, certificados y garantía de 14 días.">
+  <meta name="description" content="Resuelve tus dudas sobre cursos, pagos, certificaciones y privacidad en Ti. Encuentra respuestas y orientación para elegir tu próximo programa.">
   <title>Preguntas Frecuentes — Ti</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,85 +41,150 @@
     </div>
   </header>
 
-  <main>
-    <section class="section-space" style="padding-top: 4rem;">
+  <main class="faq-page">
+    <section class="faq-hero">
+      <div class="container faq-hero-grid">
+        <div class="faq-hero-copy">
+          <span class="faq-eyebrow"><span class="faq-eyebrow-dot"></span> Centro de ayuda Ti</span>
+          <h1>Resuelve tus dudas.<br><span>Avanza con confianza.</span></h1>
+          <p>Encuentra respuestas claras sobre nuestros cursos, pagos, clases y certificaciones. Si necesitas orientación, estamos para ayudarte.</p>
+          <a class="faq-hero-link" href="#faq-content">Explorar preguntas <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="faq-hero-art" aria-hidden="true">
+          <div class="faq-art-orbit faq-art-orbit-one"></div>
+          <div class="faq-art-orbit faq-art-orbit-two"></div>
+          <div class="faq-art-card">
+            <span class="faq-art-icon">?</span>
+            <strong>Aprender también es preguntar.</strong>
+            <span>Estamos aquí para orientarte.</span>
+          </div>
+          <span class="faq-art-bubble faq-art-bubble-one">01</span>
+          <span class="faq-art-bubble faq-art-bubble-two">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-content-section" id="faq-content">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Transparencia y Claridad</span>
-          <h1>Preguntas Frecuentes</h1>
-          <p>Resolvemos las dudas más habituales sobre los programas de Ti con información comprobable y directa.</p>
+        <div class="faq-section-intro">
+          <div>
+            <span class="faq-kicker">¿En qué podemos ayudarte?</span>
+            <h2>Preguntas frecuentes</h2>
+            <p>Busca por tema o explora las respuestas más consultadas.</p>
+          </div>
+          <div class="faq-count" aria-live="polite"><strong id="faqVisibleCount">7</strong><span> respuestas</span></div>
         </div>
 
-        <div class="faq-list">
-          <div class="faq-item" id="garantia">
-            <button type="button" class="faq-question">
-              <span>¿Cómo funciona la garantía de satisfacción ética de 14 días?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Todos los programas formativos de Ti incluyen un periodo de prueba de 14 días naturales contados a partir de tu fecha de inicio. Si durante ese tiempo sientes que el temario, el ritmo o la metodología no se ajustan a lo que necesitas, solicitas el reembolso total de tu matrícula y te reintegramos el 100% de tu dinero sin condiciones ocultas ni preguntas incómodas.
-            </div>
+        <div class="faq-tools">
+          <label class="faq-search" for="faqSearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+            <input id="faqSearch" type="search" placeholder="Buscar una pregunta..." autocomplete="off">
+            <kbd>⌕</kbd>
+          </label>
+          <div class="faq-filters" role="group" aria-label="Filtrar preguntas por tema">
+            <button class="faq-filter is-active" type="button" data-faq-filter="all" aria-pressed="true">Todas</button>
+            <button class="faq-filter" type="button" data-faq-filter="cursos" aria-pressed="false">Cursos</button>
+            <button class="faq-filter" type="button" data-faq-filter="pagos" aria-pressed="false">Pagos y garantía</button>
+            <button class="faq-filter" type="button" data-faq-filter="certificacion" aria-pressed="false">Certificación</button>
+            <button class="faq-filter" type="button" data-faq-filter="cuenta" aria-pressed="false">Privacidad</button>
+          </div>
+        </div>
+
+        <div class="faq-layout">
+          <div class="faq-list" id="faqList">
+            <article class="faq-item" id="garantia" data-category="pagos">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-garantia">
+                <span class="faq-question-number">01</span>
+                <span class="faq-question-text">¿Cómo funciona la garantía de satisfacción de 14 días?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-garantia" hidden>
+                <p>Todos los programas formativos de Ti incluyen un periodo de prueba de 14 días naturales contados a partir de tu fecha de inicio. Si durante ese tiempo sientes que el temario, el ritmo o la metodología no se ajustan a lo que necesitas, solicitas el reembolso total de tu matrícula y te reintegramos el 100% de tu dinero, de acuerdo con las condiciones aplicables.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" data-category="pagos">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-cuotas">
+                <span class="faq-question-number">02</span>
+                <span class="faq-question-text">¿Puedo pagar en cuotas mensuales?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-cuotas" hidden>
+                <p>Las opciones de pago dependen de cada curso. Algunos programas ofrecen pago único o parcialidades; consulta la ficha del curso para conocer el precio, la moneda y las condiciones vigentes. Los medios de pago disponibles se confirman durante el proceso de inscripción.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" data-category="cursos">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-clases">
+                <span class="faq-question-number">03</span>
+                <span class="faq-question-text">¿Las clases son en vivo o grabadas?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-clases" hidden>
+                <p>La modalidad y dinámica de las clases pueden variar según el programa. Revisa la ficha del curso para conocer si incluye contenido grabado, sesiones en vivo, horarios y disponibilidad de las grabaciones.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" data-category="certificacion">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-certificado">
+                <span class="faq-question-number">04</span>
+                <span class="faq-question-text">¿Qué tipo de certificado recibo al finalizar?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-certificado" hidden>
+                <p>Los requisitos y características del certificado se especifican en la información de cada programa. Antes de inscribirte, confirma qué actividades debes completar y qué entidad emite la constancia o certificado correspondiente.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" data-category="cursos">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-principiante">
+                <span class="faq-question-number">05</span>
+                <span class="faq-question-text">¿Qué ocurre si no tengo conocimientos previos en programación?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-principiante" hidden>
+                <p>Depende del nivel indicado en cada curso. Si estás comenzando, puedes explorar <a href="cursos.html#automatizacion-ia-python">Automatización Inteligente con Python y Agentes IA</a> y revisar sus requisitos antes de elegir. También puedes utilizar nuestro recomendador para encontrar una ruta de aprendizaje.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" data-category="cursos">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-asesor">
+                <span class="faq-question-number">06</span>
+                <span class="faq-question-text">¿Cómo puedo hablar con un asesor si aún tengo dudas?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-asesor" hidden>
+                <p>Puedes utilizar nuestro recomendador interactivo en la sección <a href="asesoria.html">Encuentra tu rumbo</a> para recibir orientación sobre el programa que mejor se ajusta a tus objetivos.</p>
+              </div>
+            </article>
+
+            <article class="faq-item" id="privacidad" data-category="cuenta">
+              <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-privacidad">
+                <span class="faq-question-number">07</span>
+                <span class="faq-question-text">¿Cómo protegen mis datos personales y transacciones?</span>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-privacidad" hidden>
+                <p>Antes de compartir información personal o realizar un pago, consulta el aviso de privacidad y los medios de pago habilitados. Te recomendamos confirmar los canales oficiales de atención y las condiciones de tratamiento de tus datos.</p>
+              </div>
+            </article>
           </div>
 
-          <div class="faq-item">
-            <button type="button" class="faq-question">
-              <span>¿Puedo pagar en cuotas mensuales sin intereses?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Sí. Cada curso ofrece la opción de pago único con descuento o financiación en cuotas mensuales fijas (2 o 3 cuotas según la duración del programa, ej. $89 USD/mes en Desarrollo Full-Stack). Aceptamos tarjetas de crédito, débito y transferencias internacionales seguras.
-            </div>
-          </div>
+          <aside class="faq-help-card">
+            <div class="faq-help-icon" aria-hidden="true">✦</div>
+            <span class="faq-help-label">¿Necesitas una mano?</span>
+            <h3>Hablemos de tu próximo paso.</h3>
+            <p>Cuéntanos qué quieres aprender y te ayudamos a encontrar el programa adecuado.</p>
+            <a class="faq-help-button" href="asesoria.html">Encuentra tu rumbo <span aria-hidden="true">↗</span></a>
+            <div class="faq-help-note"><span></span> Orientación para elegir con claridad</div>
+          </aside>
+        </div>
 
-          <div class="faq-item">
-            <button type="button" class="faq-question">
-              <span>¿Las clases son en vivo o grabadas?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Nuestros programas combinan módulos asíncronos grabados en alta definición con acceso 24/7 y sesiones semanales en vivo para resolución de dudas, code reviews y análisis de proyectos. Si no puedes asistir a una sesión en directo, todas quedan grabadas y disponibles en tu campus virtual.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-question">
-              <span>¿Qué tipo de certificado recibo al finalizar?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Al completar y aprobar el proyecto integrador final de tu curso, recibes un Certificado Oficial emitido por Ti con código único de validación digital y enlace permanente para compartir en LinkedIn o incluir en tu currículum.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-question">
-              <span>¿Qué ocurre si no tengo conocimientos previos en programación?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Para perfiles sin experiencia previa, recomendamos iniciar por el curso de **Automatización Inteligente con Python y Agentes IA**, diseñado específicamente para introducir la lógica de programación paso a paso con aplicaciones prácticas inmediatas.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button type="button" class="faq-question">
-              <span>¿Cómo puedo hablar con un asesor si aún tengo dudas?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              Puedes utilizar nuestro recomendador interactivo en la sección <a href="asesoria.html" style="color: var(--color-primary); font-weight: 600;">Encuentra tu rumbo</a> o consultar directamente al Asesor Comercial de Ti en la página de inicio para obtener una respuesta personalizada y transparente.
-            </div>
-          </div>
-
-          <div class="faq-item" id="privacidad">
-            <button type="button" class="faq-question">
-              <span>¿Cómo protegen mis datos personales y transacciones?</span>
-              <span class="faq-icon">↓</span>
-            </button>
-            <div class="faq-answer">
-              En Ti aplicamos un estricto principio ético de minimización de datos: únicamente solicitamos la información imprescindible para tu inscripción académica y emisión de tu certificado. No comercializamos tus datos con terceros y todos los pagos están procesados mediante plataformas internacionales con cifrado SSL de nivel bancario.
-            </div>
-          </div>
+        <div class="faq-empty" id="faqEmpty" hidden>
+          <span aria-hidden="true">⌕</span>
+          <h3>No encontramos resultados</h3>
+          <p>Prueba con otra palabra o selecciona una categoría diferente.</p>
+          <button type="button" id="faqReset">Limpiar búsqueda</button>
         </div>
       </div>
     </section>
