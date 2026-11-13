@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encuentra tu rumbo — Test interactivo de diagnóstico para elegir el curso de Ti ideal según tu meta, nivel y disponibilidad.">
+  <title>Encuentra tu rumbo — Recomendador Interactivo | Ti</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Encabezado Principal -->
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="Ti - Inicio">
+        <span class="brand-mark">t<span>i</span></span>
+        <div>
+          <span class="brand-text">Ti</span>
+          <span class="brand-tag">aprende con intención</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menú de navegación">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <nav class="primary-nav">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="cursos.html">Catálogo de Cursos</a>
+        <a class="nav-link is-active" href="asesoria.html">Encuentra tu rumbo</a>
+        <a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a>
+        <div class="nav-actions">
+          <a href="cursos.html" class="btn btn-primary btn-sm">Ver Todos ↗</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-space" style="padding-top: 4rem;">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Diagnóstico Guiado de Carrera</span>
+          <h1>¿Qué te gustaría poder <em>construir?</em></h1>
+          <p>No necesitas adivinar. Responde estas 3 breves preguntas para identificar el curso que mejor se conecta con tu experiencia, objetivos y tiempo disponible.</p>
+        </div>
+
+        <!-- Banner contextual si viene con parámetro ?curso= -->
+        <div id="courseConsultationBanner" style="display: none; max-width: 720px; margin: 0 auto 2.5rem; background: var(--color-surface); border: 2px solid var(--color-primary); border-radius: var(--radius-lg); padding: 1.5rem 1.75rem; box-shadow: var(--shadow-md);">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 260px;">
+              <span class="badge badge-primary" style="margin-bottom: 0.5rem;">Consulta sobre programa oficial</span>
+              <h3 id="bannerCourseTitle" style="font-family: var(--font-heading); font-size: 1.35rem; font-weight: 800; color: var(--color-dark); margin-bottom: 0.35rem;"></h3>
+              <p id="bannerCourseSummary" style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 0.75rem;"></p>
+              <div id="bannerCourseDetails" style="font-size: 0.85rem; color: var(--color-text); display: flex; flex-wrap: wrap; gap: 1rem;"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.6rem; min-width: 170px;">
+              <a href="cursos.html" id="bannerCourseCta" class="btn btn-primary btn-sm" style="text-align: center;">Ver en Catálogo ↗</a>
+              <button type="button" id="bannerStartQuizBtn" class="btn btn-secondary btn-sm">Evaluar mi Perfil</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-container" id="careerQuiz">
+          <!-- Barras de progreso -->
+          <div class="quiz-progress">
+            <div class="progress-bar is-completed"></div>
+            <div class="progress-bar"></div>
+            <div class="progress-bar"></div>
+          </div>
+
+          <!-- Paso 1: Objetivo -->
+          <div class="quiz-step is-active" data-step="1">
+            <span class="badge badge-primary">Paso 1 de 3</span>
+            <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.75rem; color: var(--color-dark);">¿Cuál es tu objetivo formativo prioritario?</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Selecciona el resultado profesional que deseas alcanzar:</p>
+
+            <div class="quiz-options">
+              <div class="quiz-option" data-value="web">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Construir aplicaciones web modernas completas</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Crear productos digitales con frontend reactivo, backend, APIs y bases de datos.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🌐</span>
+              </div>
+
+              <div class="quiz-option" data-value="ia">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Automatizar procesos y crear agentes con Inteligencia Artificial</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Eliminar tareas repetitivas conectando Python con APIs de LLMs y automatizaciones.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🤖</span>
+              </div>
+
+              <div class="quiz-option" data-value="cloud">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Desplegar y administrar infraestructura en la nube</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Contenedores Docker, clusters Kubernetes, pipelines CI/CD y Terraform.</span>
+                </div>
+                <span style="font-size: 1.25rem;">☁️</span>
+              </div>
+
+              <div class="quiz-option" data-value="seguridad">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Auditar y defender aplicaciones contra ataques cibernéticos</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Hacking ético defensivo, mitigación OWASP y laboratorios de pentesting.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🛡️</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 2: Nivel Previo -->
+          <div class="quiz-step" data-step="2">
+            <span class="badge badge-primary">Paso 2 de 3</span>
+            <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.75rem; color: var(--color-dark);">¿Cuál es tu experiencia técnica actual?</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Esto nos ayuda a asegurar que los prerrequisitos se ajusten a ti:</p>
+
+            <div class="quiz-options">
+              <div class="quiz-option" data-value="principiante">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Principiante / Sin experiencia técnica previa</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Busco un programa accesible con acompañamiento paso a paso.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🌱</span>
+              </div>
+
+              <div class="quiz-option" data-value="intermedio">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Intermedio / Conozco lógica de programación o terminal</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">He escrito código o administrado sistemas y quiero especializarme.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🚀</span>
+              </div>
+
+              <div class="quiz-option" data-value="avanzado">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Profesional activo en tecnología</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Busco dominar herramientas avanzadas para escalar en mi rol actual.</span>
+                </div>
+                <span style="font-size: 1.25rem;">⚡</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 3: Tiempo Semanal -->
+          <div class="quiz-step" data-step="3">
+            <span class="badge badge-primary">Paso 3 de 3</span>
+            <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 0.75rem; color: var(--color-dark);">¿Cuánto tiempo puedes dedicar cada semana?</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem;">Para recomendarte un ritmo de estudio realista y sostenible:</p>
+
+            <div class="quiz-options">
+              <div class="quiz-option" data-value="tiempo-reducido">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">4 a 6 horas por semana</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Formato asíncrono flexible a mi propio ritmo.</span>
+                </div>
+                <span style="font-size: 1.25rem;">☕</span>
+              </div>
+
+              <div class="quiz-option" data-value="tiempo-medio">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">8 a 10 horas por semana</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Ritmo equilibrado con asistencia a mentorías en vivo y proyectos.</span>
+                </div>
+                <span style="font-size: 1.25rem;">📅</span>
+              </div>
+
+              <div class="quiz-option" data-value="tiempo-intensivo">
+                <div>
+                  <strong style="color: var(--color-dark); display: block;">Más de 12 horas por semana</strong>
+                  <span style="font-size: 0.85rem; color: var(--color-text-muted);">Inmersión total para avanzar rápido en laboratorios y código.</span>
+                </div>
+                <span style="font-size: 1.25rem;">🔥</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta de Resultado Calculado -->
+          <div id="quizResultCard" style="display: none; text-align: center; padding: 2rem 1rem;">
+            <span class="badge badge-success" style="font-size: 0.85rem; padding: 0.4rem 1rem; margin-bottom: 1.25rem;">Tu Recomendación Personalizada</span>
+            <h2 id="recommendedCourseName" style="font-family: var(--font-heading); font-size: 2rem; color: var(--color-dark); margin-bottom: 1rem;"></h2>
+            <p id="recommendedCourseReason" style="color: var(--color-text-muted); max-width: 550px; margin: 0 auto 2rem; font-size: 1.05rem; line-height: 1.6;"></p>
+
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <a href="cursos.html" id="recommendedCourseLink" class="btn btn-primary btn-lg">Ver Temario y Fechas ↗</a>
+              <a href="cursos.html" class="btn btn-secondary btn-lg">Explorar Otros Cursos</a>
+            </div>
+
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border); font-size: 0.88rem; color: var(--color-text-muted);">
+              🛡️ Incluye 14 días de garantía ética de reembolso y acompañamiento de tutores.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark">t<span>i</span></span>
+            <span class="brand-text" style="color: #ffffff;">Ti</span>
+          </a>
+          <p>Formación práctica en tecnología y automatización con venta consultiva ética y transparente.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Programas</h4>
+          <ul>
+            <li><a href="cursos.html#desarrollo-web-fullstack">Desarrollo Web Full-Stack</a></li>
+            <li><a href="cursos.html#automatizacion-ia-python">Automatización con Python e IA</a></li>
+            <li><a href="cursos.html#cloud-devops">Cloud, Docker y DevOps</a></li>
+            <li><a href="cursos.html#ciberseguridad-practica">Ciberseguridad Práctica</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Orientación</h4>
+          <ul>
+            <li><a href="asesoria.html">Encuentra tu rumbo</a></li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+            <li><a href="preguntas.html#garantia">Garantía de satisfacción</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Transparencia</h4>
+          <ul>
+            <li><a href="preguntas.html#garantia">Políticas de reembolso</a></li>
+            <li><a href="preguntas.html#privacidad">Protección de datos</a></li>
+            <li><a href="cursos.html#fuentes">Fuentes del catálogo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Ti Educación Tecnológica. Todos los derechos reservados.</span>
+        <span>Información comercial verificada contra el catálogo oficial de Ti.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

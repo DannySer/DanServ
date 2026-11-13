@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo oficial de cursos de Ti. Explora programas de Desarrollo Web, Automatización con IA, Cloud DevOps y Ciberseguridad con precios y fechas verificadas.">
+  <title>Catálogo Oficial de Cursos — Ti</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Encabezado Principal -->
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="Ti - Inicio">
+        <span class="brand-mark">t<span>i</span></span>
+        <div>
+          <span class="brand-text">Ti</span>
+          <span class="brand-tag">aprende con intención</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menú de navegación">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <nav class="primary-nav">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link is-active" href="cursos.html">Catálogo de Cursos</a>
+        <a class="nav-link" href="asesoria.html">Encuentra tu rumbo</a>
+        <a class="nav-link" href="preguntas.html">Preguntas Frecuentes</a>
+        <div class="nav-actions">
+          <a href="asesoria.html" class="btn btn-secondary btn-sm">Hacer Diagnóstico</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-space" style="padding-top: 4rem; padding-bottom: 2rem;">
+      <div class="container">
+        <div class="section-head" style="margin-bottom: 2.5rem;">
+          <span class="eyebrow">Oferta Académica 2026</span>
+          <h1>Catálogo de Programas Especializados</h1>
+          <p>Todos nuestros programas están respaldados por fuentes oficiales, con temarios desglosados, requisitos claros y cuotas sin intereses.</p>
+        </div>
+
+        <!-- Barra de Búsqueda y Filtros -->
+        <div style="max-width: 850px; margin: 0 auto 3rem; display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="position: relative;">
+            <input 
+              type="text" 
+              id="courseSearchInput" 
+              placeholder="Buscar por tecnología, lenguaje o tema (ej. Python, React, Docker, Pentesting)..." 
+              style="width: 100%; padding: 1rem 1.25rem 1rem 3rem; border-radius: var(--radius-full); border: 1.5px solid var(--color-border); font-size: 0.95rem; outline: none; background: var(--color-surface); box-shadow: var(--shadow-sm); transition: var(--transition);"
+            >
+            <svg style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--color-text-muted);" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+            <button type="button" class="btn btn-sm filter-pill is-active" data-category="todos" style="background: var(--color-surface); border: 1px solid var(--color-border);">Todos los Cursos</button>
+            <button type="button" class="btn btn-sm filter-pill" data-category="Desarrollo" style="background: var(--color-surface); border: 1px solid var(--color-border);">Desarrollo Web</button>
+            <button type="button" class="btn btn-sm filter-pill" data-category="IA" style="background: var(--color-surface); border: 1px solid var(--color-border);">IA & Automatización</button>
+            <button type="button" class="btn btn-sm filter-pill" data-category="Cloud" style="background: var(--color-surface); border: 1px solid var(--color-border);">Cloud & DevOps</button>
+            <button type="button" class="btn btn-sm filter-pill" data-category="Ciberseguridad" style="background: var(--color-surface); border: 1px solid var(--color-border);">Ciberseguridad</button>
+          </div>
+        </div>
+
+        <!-- Grid de Cursos -->
+        <div class="course-grid" id="courseCatalogGrid">
+          <!-- Renderizado dinámicamente por app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Banner de Asesoría Gratuita -->
+    <section class="section-space" style="background: var(--color-surface); border-top: 1px solid var(--color-border);">
+      <div class="container" style="text-align: center; max-width: 650px;">
+        <span class="badge badge-primary" style="margin-bottom: 1rem;">Asesoría Personalizada</span>
+        <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem;">¿No sabes cuál elegir?</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 2rem; font-size: 1.05rem;">
+          Responde 3 preguntas en nuestro recomendador interactivo o conversa con el Asesor Comercial de Ti para encontrar la ruta de aprendizaje que mejor se conecta con tu momento.
+        </p>
+        <a href="asesoria.html" class="btn btn-primary btn-lg">Realizar Diagnóstico Interactivo ↗</a>
+      </div>
+    </section>
+
+    <!-- Sección de Fuentes Oficiales y Transparencia -->
+    <section class="section-space" id="fuentes" style="background: var(--color-surface-subtle); border-top: 1px solid var(--color-border); padding: 3.5rem 0;">
+      <div class="container" style="max-width: 850px;">
+        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2.25rem; box-shadow: var(--shadow-sm);">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.5rem;">📋</span>
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-dark); margin: 0;">Fuentes del Catálogo y Compromiso de Transparencia</h3>
+          </div>
+          <p style="color: var(--color-text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.25rem;">
+            Toda la oferta formativa de Ti (duraciones, temarios, precios en cuotas y certificaciones) se mantiene sincronizada y auditada conforme al repositorio de verdad registrado en <code>knowledge/cursos/</code>, bajo supervisión de la Dirección Académica y el Área de Innovación e IA de Ti.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; font-size: 0.85rem; color: var(--color-text);">
+            <div style="background: var(--color-surface-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+              <strong>✓ Precios Claros:</strong> Cuotas sin intereses ni cobros imprevistos.
+            </div>
+            <div style="background: var(--color-surface-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+              <strong>✓ Garantía Ética:</strong> Reembolso de 14 días sin preguntas.
+            </div>
+            <div style="background: var(--color-surface-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+              <strong>✓ Certificados Oficiales:</strong> Con validación de competencias.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de Temario Completo -->
+  <div class="modal-overlay" id="syllabusModal" role="dialog" aria-modal="true" aria-labelledby="syllabusModalTitle">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" aria-label="Cerrar modal">×</button>
+      <div id="syllabusModalBody">
+        <!-- Contenido inyectado dinámicamente por app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark">t<span>i</span></span>
+            <span class="brand-text" style="color: #ffffff;">Ti</span>
+          </a>
+          <p>Formación práctica en tecnología y automatización con venta consultiva ética y transparente.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Programas</h4>
+          <ul>
+            <li><a href="cursos.html#desarrollo-web-fullstack">Desarrollo Web Full-Stack</a></li>
+            <li><a href="cursos.html#automatizacion-ia-python">Automatización con Python e IA</a></li>
+            <li><a href="cursos.html#cloud-devops">Cloud, Docker y DevOps</a></li>
+            <li><a href="cursos.html#ciberseguridad-practica">Ciberseguridad Práctica</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Orientación</h4>
+          <ul>
+            <li><a href="asesoria.html">Encuentra tu rumbo</a></li>
+            <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+            <li><a href="preguntas.html#garantia">Garantía de satisfacción</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Transparencia</h4>
+          <ul>
+            <li><a href="preguntas.html#garantia">Políticas de reembolso</a></li>
+            <li><a href="preguntas.html#privacidad">Protección de datos</a></li>
+            <li><a href="cursos.html#fuentes">Fuentes del catálogo</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Ti Educación Tecnológica. Todos los derechos reservados.</span>
+        <span>Información comercial verificada contra el catálogo oficial de Ti.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
