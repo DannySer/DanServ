@@ -455,28 +455,92 @@ function initDiagnosticQuiz() {
    6. Acordeón FAQ y Gestión de Anclas Directas
    -------------------------------------------------------------------------- */
 function initFAQAccordion() {
-  const items = document.querySelectorAll(".faq-item");
+  const list = document.getElementById("faqList");
+  if (!list) return;
+
+  const items = Array.from(list.querySelectorAll(".faq-item"));
+  const search = document.getElementById("faqSearch");
+  const filters = Array.from(document.querySelectorAll("[data-faq-filter]"));
+  const count = document.getElementById("faqVisibleCount");
+  const empty = document.getElementById("faqEmpty");
+  const reset = document.getElementById("faqReset");
+  let activeFilter = "all";
+
+  function closeItem(item) {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+    item.classList.remove("is-open");
+    if (question) question.setAttribute("aria-expanded", "false");
+    if (answer) answer.hidden = true;
+  }
+
+  function openItem(item) {
+    items.forEach(closeItem);
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+    item.classList.add("is-open");
+    if (question) question.setAttribute("aria-expanded", "true");
+    if (answer) answer.hidden = false;
+  }
+
   items.forEach(item => {
     const question = item.querySelector(".faq-question");
-    if (question) {
-      question.addEventListener("click", () => {
-        const isOpen = item.classList.contains("is-open");
-        items.forEach(i => i.classList.remove("is-open"));
-        if (!isOpen) item.classList.add("is-open");
-      });
-    }
+    if (question) question.addEventListener("click", () => {
+      if (item.classList.contains("is-open")) closeItem(item);
+      else openItem(item);
+    });
   });
 
-  // Abrir y posicionar automáticamente si la URL contiene ancla (#garantia, #privacidad, etc.)
+  function applyFilters() {
+    const query = search ? search.value.trim().toLocaleLowerCase("es") : "";
+    let visible = 0;
+
+    items.forEach(item => {
+      const categoryMatch = activeFilter === "all" || item.dataset.category === activeFilter;
+      const textMatch = !query || item.textContent.toLocaleLowerCase("es").includes(query);
+      const show = categoryMatch && textMatch;
+      item.hidden = !show;
+      if (!show) closeItem(item);
+      if (show) visible += 1;
+    });
+
+    if (count) count.textContent = String(visible);
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  if (search) search.addEventListener("input", applyFilters);
+  filters.forEach(filter => filter.addEventListener("click", () => {
+    activeFilter = filter.dataset.faqFilter || "all";
+    filters.forEach(button => {
+      const selected = button === filter;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    applyFilters();
+  }));
+
+  if (reset) reset.addEventListener("click", () => {
+    if (search) search.value = "";
+    activeFilter = "all";
+    filters.forEach(button => {
+      const selected = button.dataset.faqFilter === "all";
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+    applyFilters();
+    if (search) search.focus();
+  });
+
+  // Abrir automáticamente las preguntas enlazadas desde otras páginas.
   if (window.location.hash) {
-    const targetFaq = document.querySelector(window.location.hash);
+    const targetFaq = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
     if (targetFaq && targetFaq.classList.contains("faq-item")) {
-      targetFaq.classList.add("is-open");
-      setTimeout(() => {
-        targetFaq.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 250);
+      openItem(targetFaq);
+      setTimeout(() => targetFaq.scrollIntoView({ behavior: "smooth", block: "center" }), 250);
     }
   }
+
+  applyFilters();
 }
 
 function initCopyrightYear() {
